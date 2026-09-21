@@ -1,60 +1,67 @@
-Tetris w C++
-Klasyczna gra Tetris napisana w C++ przy użyciu biblioteki SFML 3.
+# Tetris w C++
 
-Co oferuje gra?
-Plansza 10 × 20
+Klasyczna gra Tetris napisana w C++ z wykorzystaniem biblioteki SFML 3.
 
-7 rodzajów klocków (I, J, L, O, S, T, Z)
+---
 
-Przesuwanie i obracanie tetromino
+## Funkcje
 
-Kasowanie pełnych linii i naliczanie punktów
+- Plansza o wymiarach 10 × 20
+- 7 rodzajów klocków: I, J, L, O, S, T, Z
+- Przesuwanie i obracanie klocków
+- Automatyczne czyszczenie pełnych wierszy
+- Podgląd następnego klocka i licznik punktów z prawej strony
+- Ekran końca gry z możliwością restartu
 
-Podgląd następnego klocka
+---
 
-Ekran końca gry z opcją restartu (R)
+## Sterowanie
 
-Sterowanie
-Strzałki (← / →) – ruch w lewo / prawo
+| Klawisz | Akcja |
+| :--- | :--- |
+| Strzałka w lewo / prawo | Ruch w lewo / w prawo |
+| Strzałka w dół | Przyspieszenie opadania |
+| Strzałka w górę | Obrót klocka |
+| R | Nowa gra (po przegranej) |
+| Esc | Zamknięcie gry |
 
-Strzałka w dół (↓) – przyspieszenie opadania
+---
 
-Strzałka w górę (↑) – obrót klocka
+## Punktacja
 
-R – nowa gra (po przegranej)
+Punkty są przyznawane na podstawie liczby jednocześnie usuniętych wierszy:
 
-Esc – wyjście z gry
+    punkty = 100 * (liczba wierszy)^2
 
-Punktacja
-Punkty liczone są ze wzoru: 100 × (usunięte wiersze)²
+Przykłady:
+- 1 wiersz: 100 pkt
+- 4 wiersze jednocześnie: 1600 pkt
 
-1 wiersz = 100 pkt
+---
 
-4 wiersze na raz = 1600 pkt
+## Wymagania i konfiguracja
 
-Wymagania
-Windows
+- System Windows
+- Visual Studio 2022 lub nowsze
+- SFML 3.1.0
 
-Visual Studio 2022 (lub nowsze)
+Projekt zakłada, że biblioteka SFML znajduje się w katalogu C:\SFML-3.1.0. W przypadku innej lokalizacji należy zmienić ścieżki do folderów include oraz lib w ustawieniach projektu.
 
-SFML 3.1.0 (domyślnie w folderze C:\SFML-3.1.0)
+---
 
-Jak uruchomić?
-Otwórz Tetris.slnx w Visual Studio.
+## Uruchomienie
 
-Wybierz konfigurację Debug i x64.
+1. Otwórz plik Tetris.slnx w Visual Studio.
+2. Ustaw konfigurację Debug oraz platformę x64.
+3. Kompiluj i uruchom projekt (klawisz F5).
 
-Zbuduj i uruchom projekt (F5).
+---
 
-Pliki w projekcie
-Board.* – obsługa planszy, kolizji i czyszczenia linii
+## Struktura projektu
 
-Tetromino.* – definicje i obracanie klocków
-
-Game.* – główna pętla gry, sterowanie i interfejs
-
-PieceType.h – typy klocków
-
-Tetris.cpp – start programu
-
-Projekt stworzony w ramach nauki C++ i SFML.
+```text
+├── Board.*       # Logika planszy, wykrywanie kolizji i czyszczenie wierszy
+├── Tetromino.*   # Definicje klocków i ich obracanie
+├── Game.*        # Pętla gry, obsługa wejścia, rysowanie interfejsu
+├── PieceType.h   # Enumeracja typów klocków
+└── Tetris.cpp    # Funkcja main i punkt startowy
